@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Users\Niall\AndroidStudioProjects\Game2\SlidingMenu\src\main\shaders"/></dataSet><dataSet config="debug"><source path="C:\Users\Niall\AndroidStudioProjects\Game2\SlidingMenu\src\debug\shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\Users\jessi\AndroidStudioProjects\AppsForGoodGame\SlidingMenu\src\main\shaders"/></dataSet><dataSet config="debug"><source path="C:\Users\jessi\AndroidStudioProjects\AppsForGoodGame\SlidingMenu\src\debug\shaders"/></dataSet></merger>

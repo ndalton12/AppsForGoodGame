@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Game2</string>
     <string name="start_game">Start Game</string>
+    <string-array name="stats_options">Monthly Expenses</string-array>
 </resources>
