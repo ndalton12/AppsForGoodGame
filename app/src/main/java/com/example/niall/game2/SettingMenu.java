@@ -1,20 +1,21 @@
 package com.example.niall.game2;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends Activity {
+public class SettingMenu extends Activity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.start_screen);
+        setContentView(R.layout.setting_menu);
 
-        getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
+        setFullscreen();
 
+    }
+
+    private void setFullscreen() {
         int uiOptions = this.getWindow().getDecorView().getSystemUiVisibility();
         int newUiOptions = uiOptions;
 
@@ -24,11 +25,7 @@ public class MainActivity extends Activity {
         this.getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
     }
 
-    public void startGame(View v) {
-        Intent intent = new Intent(this, Game.class);
+    public void goBack(View v) {
 
-        startActivity(intent);
-
-        finish();
     }
 }

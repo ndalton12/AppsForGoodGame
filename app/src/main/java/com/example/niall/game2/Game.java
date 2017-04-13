@@ -1,8 +1,8 @@
 package com.example.niall.game2;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -14,16 +14,9 @@ public class Game extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content);
 
-        //final View decorView = getActivity().getWindow().getDecorView();
-        int uiOptions = this.getWindow().getDecorView().getSystemUiVisibility();
-        int newUiOptions = uiOptions;
+        //setFullscreen();
 
-        newUiOptions ^= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-        newUiOptions ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
-        newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-        this.getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
-
-        // stats history
+        // Sliding screens
         SlidingMenu menuStats = new SlidingMenu(this);
         menuStats.setMode(SlidingMenu.LEFT_RIGHT);
         menuStats.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
@@ -36,5 +29,28 @@ public class Game extends Activity {
         menuStats.setSecondaryMenu(R.layout.stats);
         menuStats.setSecondaryShadowDrawable(R.drawable.shadowright);
 
+    }
+
+    public void popMenu(View v) {
+        DialogFragment newFragment = new Menu();
+        newFragment.show(getFragmentManager(), "menu");
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        setFullscreen();
+    }
+
+    private void setFullscreen() {
+        int uiOptions = this.getWindow().getDecorView().getSystemUiVisibility();
+        int newUiOptions = uiOptions;
+
+        newUiOptions ^= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        this.getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
     }
 }

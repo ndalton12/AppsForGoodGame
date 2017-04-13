@@ -14,8 +14,8 @@ public class Question {
     ArrayList<String> opt2s;
     String[] returned = new String[3];
     public String[] Question(){
-        Random randy=new Random();
-        int rand= randy.nextInt(questions.size());
+        Random randy = new Random();
+        int rand = randy.nextInt(questions.size());
         this.question=questions.get(rand);
         this.opt1=opt1s.get(rand);
         this.opt2=opt2s.get(rand);
