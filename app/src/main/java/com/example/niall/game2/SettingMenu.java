@@ -2,6 +2,7 @@ package com.example.niall.game2;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.View;
 
 public class SettingMenu extends Activity {
@@ -26,6 +27,6 @@ public class SettingMenu extends Activity {
     }
 
     public void goBack(View v) {
-
+        NavUtils.navigateUpFromSameTask(this);
     }
 }

@@ -28,24 +28,25 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019"
+        app:layout_constraintVertical_bias="0.038"
         tools:ignore="TextViewEdits" />
 
     <ImageButton
         android:layout_width="55dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:background="@null"
+        android:contentDescription=""
         android:onClick="goBack"
         android:src="@drawable/ic_arrow_back_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02"
-        android:contentDescription=""
-        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/textView" />
+        app:layout_constraintRight_toLeftOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.017" />
 
 </android.support.constraint.ConstraintLayout>
