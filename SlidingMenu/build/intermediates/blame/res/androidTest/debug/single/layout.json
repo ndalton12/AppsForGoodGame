@@ -4,6 +4,10 @@
         "source": "C:\\Users\\Niall\\AndroidStudioProjects\\Game2\\SlidingMenu\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
     },
     {
+        "merged": "C:\\Users\\Jim\\StudioProjects\\AppsForGoodGame\\SlidingMenu\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
+        "source": "C:\\Users\\Jim\\StudioProjects\\AppsForGoodGame\\SlidingMenu\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
+    },
+    {
         "merged": "C:\\Users\\jessi\\AndroidStudioProjects\\AppsForGoodGame\\SlidingMenu\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
         "source": "C:\\Users\\jessi\\AndroidStudioProjects\\AppsForGoodGame\\SlidingMenu\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
     }
