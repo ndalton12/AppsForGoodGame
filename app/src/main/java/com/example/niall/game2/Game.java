@@ -25,12 +25,19 @@ public class Game extends Activity {
         menuStats.setBehindOffsetRes(R.dimen.slidingmenu_offset);
         menuStats.setFadeDegree(0.35f);
         menuStats.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+
+        // Set first menu
         menuStats.setMenu(R.layout.stats);
+
+        // Set second Menu
         menuStats.setSecondaryMenu(R.layout.stats);
         menuStats.setSecondaryShadowDrawable(R.drawable.shadowright);
 
     }
 
+    /*
+    Launches pop up menu on screen
+     */
     public void popMenu(View v) {
         DialogFragment newFragment = new Menu();
         newFragment.show(getFragmentManager(), "menu");
@@ -44,6 +51,9 @@ public class Game extends Activity {
         setFullscreen();
     }
 
+    /*
+    Helper method to set fullscreen
+     */
     private void setFullscreen() {
         int uiOptions = this.getWindow().getDecorView().getSystemUiVisibility();
         int newUiOptions = uiOptions;

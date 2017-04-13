@@ -16,6 +16,7 @@ public class Menu extends DialogFragment {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
+        // Set builder settings
         builder.setTitle(R.string.menu)
                 .setItems(R.array.menu_strings, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -24,9 +25,14 @@ public class Menu extends DialogFragment {
                         }
                     }
                 });
+
+        // Return the dialog
         return builder.create();
     }
 
+    /*
+    Initialize intent to go to SettingsMenu activity
+     */
     public void goToSettings(View v) {
         Intent intent = new Intent(getActivity(), SettingMenu.class);
         startActivity(intent);

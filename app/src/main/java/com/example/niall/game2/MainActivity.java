@@ -13,8 +13,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_screen);
 
+        // Set background to green
         getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
 
+        // Set fullscreen
         int uiOptions = this.getWindow().getDecorView().getSystemUiVisibility();
         int newUiOptions = uiOptions;
 
@@ -24,6 +26,9 @@ public class MainActivity extends Activity {
         this.getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
     }
 
+    /*
+    Initialize intent to start Game activity
+     */
     public void startGame(View v) {
         Intent intent = new Intent(this, Game.class);
 

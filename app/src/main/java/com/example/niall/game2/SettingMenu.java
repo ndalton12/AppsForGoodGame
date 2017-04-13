@@ -16,6 +16,9 @@ public class SettingMenu extends Activity {
 
     }
 
+    /*
+    Helper method to set fullscreen
+    */
     private void setFullscreen() {
         int uiOptions = this.getWindow().getDecorView().getSystemUiVisibility();
         int newUiOptions = uiOptions;
@@ -26,7 +29,10 @@ public class SettingMenu extends Activity {
         this.getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
     }
 
-    public void goBack(View v) {
+    /*
+    Go back to Game activity
+     */
+    private void goBack(View v) {
         NavUtils.navigateUpFromSameTask(this);
     }
 }
