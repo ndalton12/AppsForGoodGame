@@ -1,28 +1,89 @@
 package com.example.niall.game2;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Scanner;
 
 public class Question {
 
-    int moneyValue;
-    String question;
-    String opt1;
-    String opt2;
-    ArrayList<String> questions;
-    ArrayList<String> opt1s;
-    ArrayList<String> opt2s;
-    String[] returned = new String[3];
-    public String[] Question(){
-        Random randy = new Random();
-        int rand = randy.nextInt(questions.size());
-        this.question=questions.get(rand);
-        this.opt1=opt1s.get(rand);
-        this.opt2=opt2s.get(rand);
-        this.returned[0]=question;
-        this.returned[1]=opt1;
-        this.returned[2]=opt2;
-        return returned;
+    private String que;
+    private String ans1;
+    private String ans2;
+    private String con1;
+    private String con2;
+    public ArrayList<String[]> returner;
+
+    public void Question(){
+        File inputFile = new File("/Users/ElenaCappy/Documents/AFG/AppsForGoodGame/app/src/main/assets/textQuestions.pdf");
+        Scanner in = null;
+        try {
+            in = new Scanner(inputFile);
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        int i=0;
+        int counter=0;
+        while(in.hasNextLine())  {
+            String line = in.nextLine();
+
+            i=line.indexOf(';');
+            que=line.substring(0, i);
+            line=line.substring(0,i)+"-"+line.substring(i+1);
+            ans1=line.substring(i+1, line.indexOf(';'));
+
+            i=line.indexOf(';');
+            line=line.substring(0,i)+"-"+line.substring(i+1);
+            ans2=line.substring(i+1, line.indexOf(';'));
+
+            i=line.indexOf(';');
+            line=line.substring(0,i)+"-"+line.substring(i+1);
+            con1=line.substring(i+1, line.indexOf(';'));
+
+            i=line.indexOf(';');
+            line=line.substring(0,i)+"-"+line.substring(i+1);
+            con2=line.substring(i+1);
+
+            String[] setThing={que, ans1, ans2, con1, con2};
+            returner.add(setThing);
+            counter++;
+        }
+
     }
+
+    public String[] getQuestionInfo(int qNum){
+        if(qNum>=returner.size())
+            return null;
+        return returner.get(qNum);
+    }
+    public String getQuestion(int qNum){
+        if(qNum>=returner.size())
+            return null;
+        return (returner.get(qNum))[0];
+    }
+    public String getAns1(int qNum){
+        if(qNum>=returner.size())
+            return null;
+        return returner.get(qNum)[1];
+    }
+    public String getAns2(int qNum){
+        if(qNum>=returner.size())
+            return null;
+        return returner.get(qNum)[2];
+    }
+    public String getCons1(int qNum){
+        if(qNum>=returner.size())
+            return null;
+        return returner.get(qNum)[3];
+    }
+    public String getCons2(int qNum){
+        if(qNum>=returner.size())
+            return null;
+        return returner.get(qNum)[4];
+    }
+
+
 
 }
