@@ -25,6 +25,8 @@ public class Question {
         }
 
         int i=0;
+
+
         int counter=0;
         while(in.hasNextLine())  {
             String line = in.nextLine();
