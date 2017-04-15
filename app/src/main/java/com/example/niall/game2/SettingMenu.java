@@ -32,7 +32,7 @@ public class SettingMenu extends Activity {
     /*
     Go back to Game activity
      */
-    private void goBack(View v) {
+    public void goBack(View v) {
         NavUtils.navigateUpFromSameTask(this);
     }
 }
