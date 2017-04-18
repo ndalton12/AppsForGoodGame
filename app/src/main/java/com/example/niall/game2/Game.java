@@ -2,12 +2,15 @@ package com.example.niall.game2;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 public class Game extends Activity {
+
+    //MusicHandler musicHandler = new MusicHandler();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,7 +44,6 @@ public class Game extends Activity {
     public void popMenu(View v) {
         DialogFragment newFragment = new Menu();
         newFragment.show(getFragmentManager(), "menu");
-
     }
 
     @Override
@@ -62,5 +64,16 @@ public class Game extends Activity {
         newUiOptions ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
         newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         this.getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
     }
 }
