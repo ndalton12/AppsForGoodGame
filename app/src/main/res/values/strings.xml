@@ -5,4 +5,5 @@
     <string name="game_of_life">Game of Life</string>
     <string name="money">Money</string>
     <string name="settings">Settings</string>
+    <string name="stats">Monthly Expenses, Total Money, Money Spent</string>
 </resources>
