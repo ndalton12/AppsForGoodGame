@@ -1,0 +1,6 @@
+Do you want to go to a public or private college?; Public($); Private($); ;
+Do you want to live in a dorm or an apartment?; Dorm($); Apartment($); ;
+Do you want to use public transportation or a car?; Public transportation($); Car($); ;
+Are you going to work part time?;Yes($ income); No($ income); ;
+
+[not done!]
