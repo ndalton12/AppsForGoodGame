@@ -1,6 +1,7 @@
 package com.example.niall.game2;
 
 import android.app.Activity;
+import android.content.ComponentCallbacks2;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +13,6 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 
-    //public MusicHandler musicHandler;
     public Intent music;
 
     @Override
@@ -20,12 +20,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_screen);
 
-        //musicHandler = new MusicHandler();
-        /*** WIP FIX WITH MUSIC doBindService();
-
         music = new Intent();
         music.setClass(this,MusicService.class);
-        startService(music);*/
+        startService(music);
 
         // Set background to green
         getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
@@ -43,39 +40,6 @@ public class MainActivity extends Activity {
         finish();
     }
 
-    /*
-    Music player
-     */
-    /**************** WORK IN PROGRESS: TODO FIX MUSICHANDLER CLASS AND STOP MUSIC WHEN NOT IN FOCUS
-    private boolean mIsBound = false;
-    private MusicService mServ;
-
-    private ServiceConnection Scon =new ServiceConnection(){
-
-        public void onServiceConnected(ComponentName name, IBinder
-                binder) {
-            mServ = ((MusicService.ServiceBinder)binder).getService();
-        }
-
-        public void onServiceDisconnected(ComponentName name) {
-            mServ = null;
-        }
-    };
-
-    void doBindService(){
-        bindService(new Intent(this,MusicService.class),
-                Scon, Context.BIND_AUTO_CREATE);
-        mIsBound = true;
-    }
-
-    void doUnbindService()
-    {
-        if(mIsBound)
-        {
-            unbindService(Scon);
-            mIsBound = false;
-        }
-    }*/
 
     private void setFullscreen() {
         int uiOptions = this.getWindow().getDecorView().getSystemUiVisibility();
@@ -90,7 +54,7 @@ public class MainActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-
+        startService(music);
         setFullscreen();
     }
 
@@ -105,7 +69,12 @@ public class MainActivity extends Activity {
     public void onStop() {
         super.onStop();
 
-        //*** FIX WITH MUSIC stopService(music);
+    }
+
+    public void onTrimMemory(final int level) {
+        if (level == ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN) {
+            stopService(music);
+        }
     }
 
 }

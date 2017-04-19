@@ -2,6 +2,7 @@ package com.example.niall.game2;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.ComponentCallbacks2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,14 +11,15 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 public class Game extends Activity {
 
-    //MusicHandler musicHandler = new MusicHandler();
+    public Intent music;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content);
 
-        //setFullscreen();
+        music = new Intent();
+        music.setClass(this,MusicService.class);
 
         // Sliding screens
         SlidingMenu menuStats = new SlidingMenu(this);
@@ -49,7 +51,7 @@ public class Game extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-
+        startService(music);
         setFullscreen();
     }
 
@@ -76,4 +78,11 @@ public class Game extends Activity {
         super.onPause();
 
     }
+
+    public void onTrimMemory(final int level) {
+        if (level == ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN) {
+            stopService(music);
+        }
+    }
+
 }
