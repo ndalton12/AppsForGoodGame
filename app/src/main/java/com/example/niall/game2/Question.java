@@ -15,7 +15,7 @@ public class Question {
     public ArrayList<String[]> returner;
 
     public void Question(){
-        File inputFile = new File("/Users/ElenaCappy/Documents/AFG/AppsForGoodGame/app/src/main/assets/txtQuestionSet.txt");
+        File inputFile = new File("/AppsForGoodGame/app/src/main/assets/txtQuestionSet.txt");
         Scanner in = null;
         try {
             in = new Scanner(inputFile);
