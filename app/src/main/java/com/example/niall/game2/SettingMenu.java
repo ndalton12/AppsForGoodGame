@@ -3,6 +3,7 @@ package com.example.niall.game2;
 import android.app.Activity;
 import android.content.ComponentCallbacks2;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.View;
@@ -19,12 +20,21 @@ public class SettingMenu extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_menu);
+
+        getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
+
         music = new Intent();
         music.setClass(this,MusicService.class);
 
         musicSwitch = (Switch) findViewById(R.id.musicswitch);
 
+        // Set switch off or on depending if music is on or off
+        if (musicOffOn)
+            musicSwitch.setChecked(true);
+        else
+            musicSwitch.setChecked(false);
 
+        // Switch listener to put music on or off
         musicSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override

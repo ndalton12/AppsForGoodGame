@@ -7,4 +7,7 @@
     <string name="settings">Settings</string>
     <string name="stats">Monthly Expenses</string>
     <string name="music">Music</string>
+    <string name="credits">Credits</string>
+    <string name="icon_credit">Icons...material.io/icons/</string>
+    <string name="music_credit">Music...bensound.com</string>
 </resources>
