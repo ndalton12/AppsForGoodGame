@@ -51,7 +51,8 @@ public class Game extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        startService(music);
+        if (SettingMenu.getMusicState())
+            startService(music);
         setFullscreen();
     }
 

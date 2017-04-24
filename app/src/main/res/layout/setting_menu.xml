@@ -52,15 +52,16 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/musicswitch"
         android:layout_width="222dp"
         android:layout_height="72dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:checked="false"
+        android:checked="true"
         android:fontFamily="monospace"
+        android:splitTrack="false"
         android:text="@string/music"
         android:textSize="24sp"
         android:typeface="monospace"
