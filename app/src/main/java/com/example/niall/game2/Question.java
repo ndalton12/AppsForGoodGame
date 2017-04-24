@@ -16,7 +16,7 @@ public class Question {
 
     //"/AppsForGoodGame/app/src/main/assets/txtQuestionSet.txt"
 
-    public void Question(String filePath){
+    public Question(String filePath){
         File inputFile = new File(filePath);
         Scanner in = null;
         try {

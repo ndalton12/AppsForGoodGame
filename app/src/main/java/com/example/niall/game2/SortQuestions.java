@@ -5,5 +5,9 @@ package com.example.niall.game2;
  */
 
 public class SortQuestions {
+    public static void main(){
+        Question starters = new Question("assets/setupQuestions.txt");
+        Question randoms = new Question("assets/txtQuestionSet.txt");
 
+    }
 }
