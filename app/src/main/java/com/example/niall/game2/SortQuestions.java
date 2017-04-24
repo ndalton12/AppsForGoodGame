@@ -6,8 +6,12 @@ package com.example.niall.game2;
 
 public class SortQuestions {
     public static void main(){
-        Question starters = new Question("assets/setupQuestions.txt");
-        Question randoms = new Question("assets/txtQuestionSet.txt");
+
+//        AssetManager assetManager = getAssets();
+//        String[] files = assetManager.list("");
+//        String fileName=getAsset().open("setupQuestions.txt");
+//        Question starters = new Question(fileName);
+//        Question randoms = new Question("assets/txtQuestionSet.txt");
 
     }
 }
