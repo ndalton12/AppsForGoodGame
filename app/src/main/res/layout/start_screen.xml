@@ -53,7 +53,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:layout_constraintVertical_bias="0.48"
-            tools:ignore="ContentDescription"></ImageView>
+            tools:ignore="ContentDescription" />
 
 
         <Button

@@ -14,8 +14,10 @@ public class Question {
     private String con2;
     public ArrayList<String[]> returner;
 
-    public void Question(){
-        File inputFile = new File("/Users/ElenaCappy/Documents/AFG/AppsForGoodGame/app/src/main/assets/txtQuestionSet.txt");
+    //"/AppsForGoodGame/app/src/main/assets/txtQuestionSet.txt"
+
+    public Question(String filePath){
+        File inputFile = new File(filePath);
         Scanner in = null;
         try {
             in = new Scanner(inputFile);
