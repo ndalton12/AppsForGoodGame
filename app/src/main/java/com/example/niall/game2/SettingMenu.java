@@ -21,7 +21,7 @@ public class SettingMenu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_menu);
 
-        getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
+        getWindow().getDecorView().setBackgroundColor(Color.rgb(215, 217, 221));
 
         music = new Intent();
         music.setClass(this,MusicService.class);

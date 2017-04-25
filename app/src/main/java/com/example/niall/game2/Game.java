@@ -35,7 +35,7 @@ public class Game extends Activity {
         menuStats.setMenu(R.layout.stats);
 
         // Set second Menu
-        menuStats.setSecondaryMenu(R.layout.stats);
+        menuStats.setSecondaryMenu(R.layout.decision_history);
         menuStats.setSecondaryShadowDrawable(R.drawable.shadowright);
 
     }
