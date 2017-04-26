@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.ComponentCallbacks2;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
@@ -17,6 +18,8 @@ public class Game extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content);
+
+        getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
 
         music = new Intent();
         music.setClass(this,MusicService.class);

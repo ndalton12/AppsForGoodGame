@@ -30,7 +30,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.06999999"
-        tools:ignore="TextViewEdits,UnusedAttribute" />
+        tools:ignore="TextViewEdits,UnusedAttribute"
+        android:textColor="#ffffff" />
 
     <ListView
         android:layout_width="364dp"
