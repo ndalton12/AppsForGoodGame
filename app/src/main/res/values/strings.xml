@@ -11,4 +11,6 @@
     <string name="icon_credit">Icons...material.io/icons/</string>
     <string name="music_credit">Music...bensound.com</string>
     <string name="decision_history">Decision History</string>
+    <string name="monthly_expenses">Monthly Expenses</string>
+    <string name="loan_plan">Loan Plan</string>
 </resources>
