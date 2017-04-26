@@ -19,6 +19,7 @@ public class Game extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content);
 
+        // Sets the background for the left/right menus to be green
         getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
 
         music = new Intent();
