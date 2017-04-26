@@ -40,7 +40,18 @@ public class Game extends Activity {
         // Set second Menu
         menuStats.setSecondaryMenu(R.layout.decision_history);
         menuStats.setSecondaryShadowDrawable(R.drawable.shadowright);
+        //Elena's testing thingy
 
+
+//        AssetManager assetManager = getAssets();
+//        String[] files = assetManager.list("");
+//        String fileName=getApplicationContext().getAssets().open("setupQuestions.txt");
+//
+//        Question starters = new Question(fileName);
+//
+//        Question randoms = new Question("assets/txtQuestionSet.txt");
+//        Log.i("stuff", "this thing is actually working?"+randoms.getQuestion(0));
+//        System.out.println("it works? "+randoms.getQuestion(0));
     }
 
     /*

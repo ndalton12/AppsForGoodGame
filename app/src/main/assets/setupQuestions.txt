@@ -1,4 +1,4 @@
 Do you want to go to a public or private college?; Public($); Private($); ;
-Do you want to live in a dorm or an apartment?; Dorm($); Apartment($); ;
+Do you want to live in a dorm or an apartment?; Dorm($930); Apartment($); 930;
 Do you want to use public transportation or a car?; Public transportation($); Car(-$330 for gas monthly); ;-330
 Are you going to work part time?;Yes(+$880 income each month); No($0 income); 880; 0
