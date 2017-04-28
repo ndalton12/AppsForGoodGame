@@ -35,11 +35,13 @@
         />
 
     <android.support.percent.PercentRelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -73,22 +75,45 @@
                 <TextView
                     android:id="@+id/totalmoney"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="42dp"
                     android:text="@string/money"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:id="@+id/NumMoney"
+                    android:layout_width="match_parent"
+                    android:layout_height="123dp"
+                    android:text="100"
                     android:textColor="#ffffff" />
 
                 <TextView
                     android:id="@+id/moneyspent"
                     android:layout_width="match_parent"
-                    android:layout_height="240dp"
+                    android:layout_height="44dp"
                     android:text="@string/money_spent"
                     android:textColor="#ffffff" />
 
                 <TextView
+                    android:id="@+id/Numspent"
+                    android:layout_width="256dp"
+                    android:layout_height="137dp"
+                    android:text="0"
+                    android:textColor="#ffffff"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="-414dp" />
+
+                <TextView
                     android:id="@+id/choicesNum"
                     android:layout_width="match_parent"
-                    android:layout_height="240dp"
+                    android:layout_height="43dp"
                     android:text="@string/num_choices"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:id="@+id/Numchoices"
+                    android:layout_width="match_parent"
+                    android:layout_height="127dp"
+                    android:text="0"
                     android:textColor="#ffffff" />
 
             </LinearLayout>
