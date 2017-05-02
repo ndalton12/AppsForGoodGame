@@ -17,7 +17,9 @@ public class Question {
         this.eff1=eff1;
         this.eff2=eff2;
     }
-
+public String toString(){
+    return "question: "+que+"/nanswer1: "+ ans1+"/nanswer2: "+ ans2+"/nmoney val1: "+eff1+"/nmoney val 2: "+eff2;
+}
    public String getQue(){
        return que;
    }

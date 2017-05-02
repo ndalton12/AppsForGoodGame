@@ -2,14 +2,16 @@ package com.example.niall.game2;
 
 import android.app.Activity;
 import android.content.ComponentCallbacks2;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
 
 public class MainActivity extends Activity {
 
@@ -26,6 +28,54 @@ public class MainActivity extends Activity {
 
         // Set background to green
         getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
+
+
+        //Parsing the file
+
+        AssetManager assetManager=getAssets();
+
+        try{
+            InputStream stream = assetManager.open("txtQuestionSet.txt");
+            Scanner in = new Scanner(stream);
+            int i;
+            Question newQ;
+            final Controller aController = (Controller) getApplicationContext();
+            int counter=0;
+            while(in.hasNextLine())  {
+                String line = in.nextLine();
+
+                i=line.indexOf(';');
+                String que=line.substring(0, i);
+                line=line.substring(0,i)+"-"+line.substring(i+1);
+                String ans1=line.substring(i+1, line.indexOf(';'));
+
+                i=line.indexOf(';');
+                line=line.substring(0,i)+"-"+line.substring(i+1);
+                String ans2=line.substring(i+1, line.indexOf(';'));
+
+                i=line.indexOf(';');
+                line=line.substring(0,i)+"-"+line.substring(i+1);
+                String con1=line.substring(i+1, line.indexOf(';'));
+
+                i=line.indexOf(';');
+                line=line.substring(0,i)+"-"+line.substring(i+1);
+                String con2=line.substring(i+1);
+
+
+                int c1 = Integer.parseInt(con1);
+                int c2 = Integer.parseInt(con2);
+
+                newQ=new Question(que, ans1, ans2, c1, c2);
+                Log.i("Elena",newQ.toString());
+                aController.addQuestion(newQ);
+
+                counter++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 
