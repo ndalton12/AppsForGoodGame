@@ -4,11 +4,20 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.ComponentCallbacks2;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
 
 public class Game extends Activity {
 
@@ -29,6 +38,7 @@ public class Game extends Activity {
         SlidingMenu menuStats = new SlidingMenu(this);
         menuStats.setMode(SlidingMenu.LEFT_RIGHT);
         menuStats.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        menuStats.setTouchModeBehind(SlidingMenu.TOUCHMODE_FULLSCREEN);
         menuStats.setShadowWidthRes(R.dimen.shadow_width);
         menuStats.setShadowDrawable(R.drawable.shadow);
         menuStats.setBehindOffsetRes(R.dimen.slidingmenu_offset);
@@ -41,18 +51,64 @@ public class Game extends Activity {
         // Set second Menu
         menuStats.setSecondaryMenu(R.layout.decision_history);
         menuStats.setSecondaryShadowDrawable(R.drawable.shadowright);
-        //Elena's testing thingy
+
+        /**** Test case for adding text views to decision history -- will be implemented with the game
+        TODO? Make decision class to handle this? or just create private method instead < - probably easier
+        TextView test;
+        LinearLayout llay = (LinearLayout) findViewById(R.id.scrollLinear);
+
+        test = new TextView(this);
+        test.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        test.setText("Hello there");
+        llay.addView(test);
+
+        ScrollView sv = (ScrollView) findViewById(R.id.decisionScrollView);
+        sv.invalidate();
+        sv.requestLayout();*/
+
+        AssetManager assetManager=getAssets();
+
+        try {
+            InputStream stream = assetManager.open("txtQuestionSet.txt");
+            Scanner in = new Scanner(stream);
+            int i;
+            Question newQ;
+            final Controller aController = (Controller) getApplicationContext();
+            int counter=0;
+            while(in.hasNextLine())  {
+                String line = in.nextLine();
+
+                i=line.indexOf(';');
+                String que=line.substring(0, i);
+                line=line.substring(0,i)+"-"+line.substring(i+1);
+                String ans1=line.substring(i+1, line.indexOf(';'));
+
+                i=line.indexOf(';');
+                line=line.substring(0,i)+"-"+line.substring(i+1);
+                String ans2=line.substring(i+1, line.indexOf(';'));
+
+                i=line.indexOf(';');
+                line=line.substring(0,i)+"-"+line.substring(i+1);
+                String con1=line.substring(i+1, line.indexOf(';'));
+
+                i=line.indexOf(';');
+                line=line.substring(0,i)+"-"+line.substring(i+1);
+                String con2=line.substring(i+1);
 
 
-//        AssetManager assetManager = getAssets();
-//        String[] files = assetManager.list("");
-//        String fileName=getApplicationContext().getAssets().open("setupQuestions.txt");
-//
-//        Question starters = new Question(fileName);
-//
-//        Question randoms = new Question("assets/txtQuestionSet.txt");
-//        Log.i("stuff", "this thing is actually working?"+randoms.getQuestion(0));
-//        System.out.println("it works? "+randoms.getQuestion(0));
+                int c1 = Integer.parseInt(con1);
+                int c2 = Integer.parseInt(con2);
+
+                newQ=new Question(que, ans1, ans2, c1, c2);
+                Log.i("Elena",newQ.toString());
+                aController.addQuestion(newQ);
+
+                counter++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /*

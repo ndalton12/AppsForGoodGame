@@ -37,7 +37,7 @@ public class Controller extends Application {
     }
 
     /*Below are all of the methods related to the Question class.
-    * There are threee different question array lists. One is an
+    * There are three different question array lists. One is an
     * unordered list of questions, one is an ordered set, and the
     * other deletes the questions as they are read by the user.
     * We need to consider whether we want to use getQuestionStart
