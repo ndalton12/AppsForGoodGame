@@ -10,12 +10,17 @@ import java.util.Random;
 
 public class Controller extends Application {
 
-    //All of the variables:
+    //initializing data
     private ArrayList<Question> questionSet=new ArrayList<Question>();
     private ArrayList<Question> questionSetMaster=new ArrayList<Question>();
     private ArrayList<Question> questionSetOrdered=new ArrayList<Question>();
-
     private ArrayList<Decision> decisionSet=new ArrayList<Decision>();
+    StatsValues stats = new StatsValues();
+
+    //not sure how this is useful yet, but it's here - Elena
+    public StatsValues getStatsValues(){
+        return stats;
+    }
 
     //adds a decision to the decision arraylist
     public void addDecision(Decision d){
@@ -40,7 +45,6 @@ public class Controller extends Application {
         questionSet.remove(0);
         questionSetOrdered.add(q);
         return q;
-
     }
 
     //returns a random question object
