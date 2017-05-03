@@ -10,13 +10,25 @@ public class StatsValues {
         numChoices = 0;
             }
 
+    public void updateNumChoices() {
+        numChoices = numChoices +1;
+    }
+
+    public void updateMoney(int x) {
+        totalMoney = totalMoney + x;
+        if(x<0) {
+            moneySpent = moneySpent+x;
+        }
+    }
+    public int getTotalMoney() {
+        return totalMoney;
+    }
+
     public int getMoneySpent() {
         return moneySpent;
     }
-    public void updatenumChoices() {
-        numChoices = numChoices +1;
-    }
-    public void updatetotalMoney() {
-        //totalMoney = totalMoney + Question.eff1();
+
+    public int getNumChoices() {
+        return numChoices;
     }
         }
