@@ -18,9 +18,10 @@ public class Question {
         this.eff2=eff2;
     }
 public String toString(){
-    return "question: "+que+"/nanswer1: "+ ans1+"/nanswer2: "+ ans2+"/nmoney val1: "+eff1+"/nmoney val 2: "+eff2;
+    return "question: "+que+" answer1: "+ ans1+" answer2: "+ ans2+" money val1: "+eff1+" money val 2: "+eff2;
 }
-   public String getQue(){
+
+    public String getQue(){
        return que;
    }
     public String getAns1(){
@@ -49,6 +50,13 @@ public String toString(){
     }
     public void setEff2(int ef){
         eff2=ef;
+    }
+
+    public int getEff(int val){
+        if(val==1)
+            return eff1;
+        else
+            return eff2;
     }
 
 }

@@ -1,7 +1,6 @@
 package com.example.niall.game2;
 
 import android.app.Application;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -10,8 +9,12 @@ import java.util.Random;
  */
 
 public class Controller extends Application {
+
+    //All of the variables:
     private ArrayList<Question> questionSet=new ArrayList<Question>();
     private ArrayList<Question> questionSetMaster=new ArrayList<Question>();
+    private ArrayList<Question> questionSetOrdered=new ArrayList<Question>();
+
 
 
     //adds a question to the arraylist
@@ -24,6 +27,7 @@ public class Controller extends Application {
     public Question getQuestionStart(){
         Question q = questionSet.get(0);
         questionSet.remove(0);
+        questionSetOrdered.add(q);
         return q;
 
     }
@@ -34,6 +38,24 @@ public class Controller extends Application {
         int num=rand.nextInt(questionSet.size());
         Question q = questionSet.get(num);
         questionSet.remove(num);
+        questionSetOrdered.add(q);
         return q;
     }
+
+    //returns array list of all questions
+    public ArrayList<Question> getOriginalQuestions(){
+        return questionSetMaster;
+    }
+
+    //returns array list of all questions left
+    public ArrayList<Question> getRemainingQuestions(){
+        return questionSet;
+    }
+
+    //returns array list of all questions in order
+    public ArrayList<Question> getOrderedQuestions(){
+        return questionSetOrdered;
+    }
+
+
 }
