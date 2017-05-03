@@ -14,9 +14,17 @@ public class Decision {
 
     public Decision(Question q, int choice){
         que=q.getQue();
-        if(choice==1){
-            ans=q.getAns1();
-            //Elena needs to finish this
-        }
+        ans=q.getAns(choice);
+        eff=q.getEff(choice);
+
+    }
+    public String getQuestion(){
+        return que;
+    }
+    public String getAnswer(){
+        return ans;
+    }
+    public int getEffect() {
+        return eff;
     }
 }

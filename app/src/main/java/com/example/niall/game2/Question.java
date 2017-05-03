@@ -58,5 +58,11 @@ public String toString(){
         else
             return eff2;
     }
+    public String getAns(int val){
+        if(val==1)
+            return ans1;
+        else
+            return ans2;
+    }
 
 }
