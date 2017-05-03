@@ -15,7 +15,18 @@ public class Controller extends Application {
     private ArrayList<Question> questionSetMaster=new ArrayList<Question>();
     private ArrayList<Question> questionSetOrdered=new ArrayList<Question>();
 
+    private ArrayList<Decision> decisionSet=new ArrayList<Decision>();
 
+    //adds a decision to the decision arraylist
+    public void addDecision(Decision d){
+        decisionSet.add(d);
+    }
+
+    //returns the effect of the last decision added
+    public int getLastEffect(){
+        Decision d = decisionSet.get(decisionSet.size()-1);
+        return d.getEffect();
+    }
 
     //adds a question to the arraylist
     public void addQuestion(Question addition){
