@@ -13,10 +13,17 @@ public class Controller extends Application {
     private ArrayList<Decision> decisionSet=new ArrayList<Decision>();
     StatsValues stats = new StatsValues();
 
+    /*Below are the methods related to the StatsValues class.
+     * Still currently a work in progress. */
+
     //not sure how this is useful yet, but it's here - Elena
     public StatsValues getStatsValues(){
         return stats;
     }
+
+    /*Below are the methods relating to the Decision class/object.
+    * Decision is used mainly for decision history, but we might
+    * be able to implement it into Stats as well. TBD.*/
 
     //adds a decision to the decision arraylist
     public void addDecision(Decision d){
@@ -28,6 +35,14 @@ public class Controller extends Application {
         Decision d = decisionSet.get(decisionSet.size()-1);
         return d.getEffect();
     }
+
+    /*Below are all of the methods related to the Question class.
+    * There are threee different question array lists. One is an
+    * unordered list of questions, one is an ordered set, and the
+    * other deletes the questions as they are read by the user.
+    * We need to consider whether we want to use getQuestionStart
+    * or getQuestionRand to take random questions*/
+
 
     //adds a question to the arraylist
     public void addQuestion(Question addition){
