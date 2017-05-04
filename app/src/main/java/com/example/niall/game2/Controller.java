@@ -21,6 +21,11 @@ public class Controller extends Application {
         return stats;
     }
 
+    //This method takes in a Question and a choice and then helps
+    // to change the stats values
+    public void changeStats(Question q, int choice){
+        stats.updateMoney(q.getEff(choice));
+    }
     /*Below are the methods relating to the Decision class/object.
     * Decision is used mainly for decision history, but we might
     * be able to implement it into Stats as well. TBD.*/

@@ -9,9 +9,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
@@ -20,7 +17,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class Game extends Activity {
-
+    final Controller aController = (Controller) getApplicationContext();
     public Intent music;
 
     @Override
@@ -66,14 +63,16 @@ public class Game extends Activity {
         sv.invalidate();
         sv.requestLayout();*/
 
-        AssetManager assetManager=getAssets();
+        AssetManager assetManager=getAssets(); //This line allows us to access the assets folder
 
+        //The code enclosed in the try/catch creates an input stream and scanner. Then it parces
+        // the input it gets from its file and puts it into a Question class. This goes on in a while loop
         try {
             InputStream stream = assetManager.open("txtQuestionSet.txt");
             Scanner in = new Scanner(stream);
             int i;
             Question newQ;
-            final Controller aController = (Controller) getApplicationContext();
+
             int counter=0;
             while(in.hasNextLine())  {
                 String line = in.nextLine();
@@ -156,5 +155,11 @@ public class Game extends Activity {
             stopService(music);
         }
     }
+
+//    public void onClickButton(Question q, int c, ){
+//        Decision d=new Decision(q, c);
+//        aController.addDecision(d);
+//        aController.changeStats(q, c);
+//    }
 
 }
