@@ -11,12 +11,12 @@ public class Controller extends Application {
     private ArrayList<Question> questionSetMaster=new ArrayList<Question>();
     private ArrayList<Question> questionSetOrdered=new ArrayList<Question>();
     private ArrayList<Decision> decisionSet=new ArrayList<Decision>();
-    StatsValues stats = new StatsValues();
+    StatsValues stats = new StatsValues(); //This creates an instance of the stats function
 
     /*Below are the methods related to the StatsValues class.
      * Still currently a work in progress. */
 
-    //not sure how this is useful yet, but it's here - Elena
+    //This returns the instance of the StatsValue class
     public StatsValues getStatsValues(){
         return stats;
     }
