@@ -32,6 +32,7 @@ public class Controller extends Application {
     // to change the stats values
     public void changeStats(Question q, int choice){
         stats.updateMoney(q.getEff(choice));
+        stats.updateNumChoices();
     }
     /*Below are the methods relating to the Decision class/object.
     * Decision is used mainly for decision history, but we might
@@ -94,6 +95,10 @@ public class Controller extends Application {
     //returns array list of all questions in order
     public ArrayList<Question> getOrderedQuestions(){
         return questionSetOrdered;
+    }
+
+    public Question getCurrentQuestion() {
+        return questionSet.get(questionSet.size() - 1);
     }
 
 

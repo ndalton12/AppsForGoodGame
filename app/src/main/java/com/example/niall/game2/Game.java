@@ -4,33 +4,38 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.ComponentCallbacks2;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Scanner;
-
 public class Game extends Activity {
-
     public Intent music;
+    private Controller aController;
+    private TextView questionText;
+    private Button ansButton1;
+    private Button ansButton2;
+    private TextView totalMoney;
+    private TextView spentMoney;
+    private TextView numChoices;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        final Controller aController = (Controller) getApplicationContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content);
 
         // Sets the background for the left/right menus to be green
         getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
 
+        // Initialize music
         music = new Intent();
         music.setClass(this,MusicService.class);
+
+        // Initialize controller
+        aController = (Controller) getApplicationContext();
 
         // Sliding screens
         SlidingMenu menuStats = new SlidingMenu(this);
@@ -50,8 +55,23 @@ public class Game extends Activity {
         menuStats.setSecondaryMenu(R.layout.decision_history);
         menuStats.setSecondaryShadowDrawable(R.drawable.shadowright);
 
+        questionText = (TextView) findViewById(R.id.question_text);
+        totalMoney = (TextView) findViewById(R.id.tot_money);
+        spentMoney = (TextView) findViewById(R.id.spent_money);
+        numChoices = (TextView) findViewById(R.id.num_choices);
+
+        ansButton1 = (Button) findViewById(R.id.answer_button1);
+        ansButton2 = (Button) findViewById(R.id.answer_button2);
+
+        //if(aController.getRemainingQuestions())
+
+        Question quest = aController.getQuestionRand();
+
+        questionText.setText(quest.getQue());
+        ansButton1.setText(quest.getAns1());
+        ansButton2.setText(quest.getAns2());
+
         /**** Test case for adding text views to decision history -- will be implemented with the game
-        TODO? Make decision class to handle this? or just create private method instead < - probably easier
         TextView test;
         LinearLayout llay = (LinearLayout) findViewById(R.id.scrollLinear);
 
@@ -63,51 +83,6 @@ public class Game extends Activity {
         ScrollView sv = (ScrollView) findViewById(R.id.decisionScrollView);
         sv.invalidate();
         sv.requestLayout();*/
-
-        AssetManager assetManager=getAssets(); //This line allows us to access the assets folder
-
-        //The code enclosed in the try/catch creates an input stream and scanner. Then it parces
-        // the input it gets from its file and puts it into a Question class. This goes on in a while loop
-        try {
-            InputStream stream = assetManager.open("txtQuestionSet.txt");
-            Scanner in = new Scanner(stream);
-            int i;
-            Question newQ;
-
-            int counter=0;
-            while(in.hasNextLine())  {
-                String line = in.nextLine();
-
-                i=line.indexOf(';');
-                String que=line.substring(0, i);
-                line=line.substring(0,i)+"-"+line.substring(i+1);
-                String ans1=line.substring(i+1, line.indexOf(';'));
-
-                i=line.indexOf(';');
-                line=line.substring(0,i)+"-"+line.substring(i+1);
-                String ans2=line.substring(i+1, line.indexOf(';'));
-
-                i=line.indexOf(';');
-                line=line.substring(0,i)+"-"+line.substring(i+1);
-                String con1=line.substring(i+1, line.indexOf(';'));
-
-                i=line.indexOf(';');
-                line=line.substring(0,i)+"-"+line.substring(i+1);
-                String con2=line.substring(i+1);
-
-
-                int c1 = Integer.parseInt(con1);
-                int c2 = Integer.parseInt(con2);
-
-                newQ=new Question(que, ans1, ans2, c1, c2);
-                Log.i("Elena",newQ.toString());
-                aController.addQuestion(newQ);
-
-                counter++;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -157,10 +132,55 @@ public class Game extends Activity {
         }
     }
 
-//    public void onClickButton(Question q, int c, ){
-//        Decision d=new Decision(q, c);
-//        aController.addDecision(d);
-//        aController.changeStats(q, c);
-//    }
+    public void answerButton1(View v){
+        Decision d = new Decision(aController.getCurrentQuestion(), 1);
+        aController.addDecision(d);
+        aController.changeStats(aController.getCurrentQuestion(), 1);
+
+        StatsValues stats = aController.getStatsValues();
+
+        totalMoney.setText(String.valueOf(stats.getTotalMoney()));
+        spentMoney.setText(String.valueOf(stats.getMoneySpent()));
+        numChoices.setText(String.valueOf(stats.getNumChoices()));
+
+        if(aController.getRemainingQuestions().size() == 0)
+            finishGame();
+        else {
+
+            Question quest = aController.getQuestionRand();
+
+            questionText.setText(quest.getQue());
+            ansButton1.setText(quest.getAns1());
+            ansButton2.setText(quest.getAns2());
+        }
+    }
+
+    public void answerButton2(View v){
+        Decision d = new Decision(aController.getCurrentQuestion(), 2);
+        aController.addDecision(d);
+        aController.changeStats(aController.getCurrentQuestion(), 2);
+        StatsValues stats = aController.getStatsValues();
+
+        totalMoney.setText(String.valueOf(stats.getTotalMoney()));
+        spentMoney.setText(String.valueOf(stats.getMoneySpent()));
+        numChoices.setText(String.valueOf(stats.getNumChoices()));
+
+        if(aController.getRemainingQuestions().size() == 0)
+            finishGame();
+        else {
+
+            Question quest = aController.getQuestionRand();
+
+            questionText.setText(quest.getQue());
+            ansButton1.setText(quest.getAns1());
+            ansButton2.setText(quest.getAns2());
+        }
+    }
+
+    public void finishGame(){
+
+    }
+
+
 
 }

@@ -11,19 +11,23 @@
         android:theme="@style/AppTheme"
         android:name="com.example.niall.game2.Controller">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game">
+        <activity android:name=".Game"
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SettingMenu" android:parentActivityName=".Game">
+        <activity android:name=".SettingMenu"
+            android:parentActivityName=".Game"
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
