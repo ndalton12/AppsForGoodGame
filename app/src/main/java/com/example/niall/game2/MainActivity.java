@@ -77,6 +77,33 @@ public class MainActivity extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    Roadblock newR;
+        try {
+            InputStream stream2 = assetManager.open("roadblockText.txt");
+            Scanner in2 = new Scanner(stream2);
+            int j;
+            Question newQ;
+
+            int counter = 0;
+            while (in2.hasNextLine()) {
+                String line = in2.nextLine();
+
+                j = line.indexOf(';');
+                String prompter = line.substring(0, j);
+                line = line.substring(0, j) + "-" + line.substring(j + 1);
+                String effString = line.substring(j + 1);
+
+                int effInt = Integer.parseInt(effString);
+
+                newR = new Roadblock(prompter, effInt);
+                Log.i("Elena", newR.toString());
+                aController.addRoadblock(newR);
+                counter++;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /*
