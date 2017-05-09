@@ -10,8 +10,15 @@ public class Controller extends Application {
     private ArrayList<Question> questionSet=new ArrayList<Question>();
     private ArrayList<Question> questionSetMaster=new ArrayList<Question>();
     private ArrayList<Question> questionSetOrdered=new ArrayList<Question>();
+
+    private ArrayList<Roadblock> roadblockSet=new ArrayList<Roadblock>();
+    private ArrayList<Roadblock> roadblockSetMaster=new ArrayList<Roadblock>();
+    private ArrayList<Roadblock> roadblockSetOrdered=new ArrayList<Roadblock>();
+
     private ArrayList<Decision> decisionSet=new ArrayList<Decision>();
+
     StatsValues stats = new StatsValues(); //This creates an instance of the stats function
+
 
     /*Below are the methods related to the StatsValues class.
      * Still currently a work in progress. */
@@ -78,6 +85,7 @@ public class Controller extends Application {
         return questionSetMaster;
     }
 
+
     //returns array list of all questions left
     public ArrayList<Question> getRemainingQuestions(){
         return questionSet;
@@ -86,6 +94,49 @@ public class Controller extends Application {
     //returns array list of all questions in order
     public ArrayList<Question> getOrderedQuestions(){
         return questionSetOrdered;
+    }
+
+
+    /* The following methods correspond to the Roadblock class */
+
+    //adds a roadblock to the arraylist
+    public void addRoadblock(Roadblock addition){
+        roadblockSet.add(addition);
+        roadblockSetMaster.add(addition);
+    }
+
+    //returns first roadblock object in the list
+    public Roadblock getRoadblockStart(){
+        Roadblock q = roadblockSet.get(0);
+        roadblockSet.remove(0);
+        roadblockSetOrdered.add(q);
+        return q;
+    }
+
+    //returns a random roadblock object
+    public Roadblock getRoadblockRand(){
+        Random rand = new Random();
+        int num=rand.nextInt(roadblockSet.size());
+        Roadblock q = roadblockSet.get(num);
+        roadblockSet.remove(num);
+        roadblockSetOrdered.add(q);
+        return q;
+    }
+
+    //returns array list of all roadblocks
+    public ArrayList<Roadblock> getOriginalRoadblocks(){
+        return roadblockSetMaster;
+    }
+
+
+    //returns array list of all roadblocks left
+    public ArrayList<Roadblock> getRemainingRoadblocks(){
+        return roadblockSet;
+    }
+
+    //returns array list of all roadblocks in order
+    public ArrayList<Roadblock> getOrderedRoadblocks(){
+        return roadblockSetOrdered;
     }
 
 

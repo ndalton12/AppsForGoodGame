@@ -17,11 +17,12 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class Game extends Activity {
-    final Controller aController = (Controller) getApplicationContext();
+
     public Intent music;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        final Controller aController = (Controller) getApplicationContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content);
 
