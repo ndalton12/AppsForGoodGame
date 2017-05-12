@@ -8,11 +8,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 public class Game extends Activity {
+    public static Activity finishHim;
     public Intent music;
     private Controller aController;
     private TextView questionText;
@@ -21,11 +24,14 @@ public class Game extends Activity {
     private TextView totalMoney;
     private TextView spentMoney;
     private TextView numChoices;
+    private TextView moneyCounter;
+    private boolean fullScreen = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content);
+        finishHim = this;
 
         // Sets the background for the left/right menus to be green
         getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
@@ -55,34 +61,27 @@ public class Game extends Activity {
         menuStats.setSecondaryMenu(R.layout.decision_history);
         menuStats.setSecondaryShadowDrawable(R.drawable.shadowright);
 
+        // Initialize the text views
         questionText = (TextView) findViewById(R.id.question_text);
         totalMoney = (TextView) findViewById(R.id.tot_money);
         spentMoney = (TextView) findViewById(R.id.spent_money);
         numChoices = (TextView) findViewById(R.id.num_choices);
+        moneyCounter = (TextView) findViewById(R.id.money_counter);
 
+        // Initialize the buttons
         ansButton1 = (Button) findViewById(R.id.answer_button1);
         ansButton2 = (Button) findViewById(R.id.answer_button2);
 
-        //if(aController.getRemainingQuestions())
-
+        // Set first question
         Question quest = aController.getQuestionRand();
 
         questionText.setText(quest.getQue());
         ansButton1.setText(quest.getAns1());
         ansButton2.setText(quest.getAns2());
 
-        /**** Test case for adding text views to decision history -- will be implemented with the game
-        TextView test;
-        LinearLayout llay = (LinearLayout) findViewById(R.id.scrollLinear);
+        StatsValues stats = aController.getStatsValues();
 
-        test = new TextView(this);
-        test.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        test.setText("Hello there");
-        llay.addView(test);
-
-        ScrollView sv = (ScrollView) findViewById(R.id.decisionScrollView);
-        sv.invalidate();
-        sv.requestLayout();*/
+        stats.reset();
 
     }
 
@@ -99,7 +98,8 @@ public class Game extends Activity {
         super.onResume();
         if (SettingMenu.getMusicState())
             startService(music);
-        setFullscreen();
+        if (!fullScreen)
+            setFullscreen();
     }
 
     /*
@@ -113,6 +113,8 @@ public class Game extends Activity {
         newUiOptions ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
         newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         this.getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
+
+        fullScreen = !fullScreen;
     }
 
     @Override
@@ -136,12 +138,18 @@ public class Game extends Activity {
         Decision d = new Decision(aController.getCurrentQuestion(), 1);
         aController.addDecision(d);
         aController.changeStats(aController.getCurrentQuestion(), 1);
+        updateDecisions(d.toString());
 
         StatsValues stats = aController.getStatsValues();
 
         totalMoney.setText(String.valueOf(stats.getTotalMoney()));
         spentMoney.setText(String.valueOf(stats.getMoneySpent()));
         numChoices.setText(String.valueOf(stats.getNumChoices()));
+        moneyCounter.setText(
+                String.format(
+                        "%s%s",
+                        getString(R.string.dollar_sign),
+                        String.valueOf(stats.getTotalMoney())));
 
         if(aController.getRemainingQuestions().size() == 0)
             finishGame();
@@ -159,11 +167,18 @@ public class Game extends Activity {
         Decision d = new Decision(aController.getCurrentQuestion(), 2);
         aController.addDecision(d);
         aController.changeStats(aController.getCurrentQuestion(), 2);
+        updateDecisions(d.toString());
+
         StatsValues stats = aController.getStatsValues();
 
         totalMoney.setText(String.valueOf(stats.getTotalMoney()));
         spentMoney.setText(String.valueOf(stats.getMoneySpent()));
         numChoices.setText(String.valueOf(stats.getNumChoices()));
+        moneyCounter.setText(
+                String.format(
+                        "%s%s",
+                        getString(R.string.dollar_sign),
+                        String.valueOf(stats.getTotalMoney())));
 
         if(aController.getRemainingQuestions().size() == 0)
             finishGame();
@@ -178,9 +193,25 @@ public class Game extends Activity {
     }
 
     public void finishGame(){
-
+        DialogFragment newFragment = new EndGameDialog();
+        newFragment.show(getFragmentManager(), "end_game_dialog");
     }
 
+    private void updateDecisions(String text) {
+        TextView test;
+        LinearLayout llay = (LinearLayout) findViewById(R.id.scrollLinear);
 
+        test = new TextView(this);
+        test.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        test.setText(text + "\n");
+        test.setTextColor(Color.WHITE);
+        test.setTextSize(22);
+        llay.addView(test);
+
+        ScrollView sv = (ScrollView) findViewById(R.id.decisionScrollView);
+        sv.bringToFront();
+        sv.invalidate();
+        sv.requestLayout();
+    }
 
 }

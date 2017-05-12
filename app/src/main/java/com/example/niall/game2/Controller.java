@@ -17,6 +17,8 @@ public class Controller extends Application {
 
     private ArrayList<Decision> decisionSet=new ArrayList<Decision>();
 
+    private boolean bool = false;
+
     StatsValues stats = new StatsValues(); //This creates an instance of the stats function
 
 
@@ -98,7 +100,7 @@ public class Controller extends Application {
     }
 
     public Question getCurrentQuestion() {
-        return questionSet.get(questionSet.size() - 1);
+        return questionSetOrdered.get(questionSetOrdered.size() - 1);
     }
 
 
@@ -144,5 +146,15 @@ public class Controller extends Application {
         return roadblockSetOrdered;
     }
 
+    public void on() {
+        bool = true;
+    }
 
+    public void off() {
+        bool = false;
+    }
+
+    public boolean getOnOff() {
+        return bool;
+    }
 }

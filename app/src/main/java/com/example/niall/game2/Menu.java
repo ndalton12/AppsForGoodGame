@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.WindowManager;
 
 
 public class Menu extends DialogFragment {
@@ -30,7 +31,9 @@ public class Menu extends DialogFragment {
                 });
 
         // Return the dialog
-        return builder.create();
+        Dialog d = builder.create();
+        d.getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+        return d;
     }
 
     /*

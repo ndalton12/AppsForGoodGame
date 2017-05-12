@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="183dp"
+            android:layout_width="550dp"
             android:layout_height="39dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
@@ -25,7 +25,7 @@
             android:textColor="#ffffff"
             android:fontFamily="sans-serif"
             android:inputType="textPersonName"
-            android:text="@string/game_of_life"
+            android:text="@string/game_name"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textSize="30sp"

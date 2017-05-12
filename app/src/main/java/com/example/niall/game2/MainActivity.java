@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
 
         AssetManager assetManager = getAssets(); //This line allows us to access the assets folder
 
-        //The code enclosed in the try/catch creates an input stream and scanner. Then it parces
+        // The code enclosed in the try/catch creates an input stream and scanner. Then it parces
         // the input it gets from its file and puts it into a Question class. This goes on in a while loop
         try {
             InputStream stream = assetManager.open("txtQuestionSet.txt");

@@ -39,4 +39,10 @@ public class StatsValues {
         return numChoices;
     }
 
+    public void reset() {
+        moneySpent = 0;
+        totalMoney = 100;
+        numChoices = 0;
+    }
+
 }
