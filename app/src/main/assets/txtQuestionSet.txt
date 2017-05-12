@@ -2,3 +2,4 @@ Happy Holidays! Your parents want to fly you back home, but you would lose some 
 The space heater in your room broke. ; Get it fixed  ; Wear a sweatshirt ?;-50;0
 You twisted your ankle three days ago when you were running and it really hurts still. ; Go to the doctor’s office; Ice it and hope it heals on its own;-75;0
 You don’t feel ready for a test tomorrow. ; Drink a redbull and pull an all nighter ; Hope for the best;-5;0
+Question;answer 1; answer 2;43;-72
