@@ -2,10 +2,13 @@ package com.example.niall.game2;
 
 import android.app.Activity;
 import android.content.ComponentCallbacks2;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.util.Log;
 import android.view.View;
 
@@ -22,6 +25,14 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_screen);
+
+        // Set fullscreen
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_IMMERSIVE);
 
         music = new Intent();
         music.setClass(this, MusicService.class);
@@ -134,6 +145,17 @@ public class MainActivity extends Activity {
     public void onResume() {
         super.onResume();
         startService(music);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        PowerManager powerManager = (PowerManager)this.getSystemService(Context.POWER_SERVICE);
+        boolean isScreenAwake = (Build.VERSION.SDK_INT < 20? powerManager.isScreenOn():powerManager.isInteractive());
+
+        if (!isScreenAwake)
+            stopService(music);
     }
 
     public void onTrimMemory(final int level) {

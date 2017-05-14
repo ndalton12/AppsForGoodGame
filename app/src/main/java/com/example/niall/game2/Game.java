@@ -8,7 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -39,6 +41,14 @@ public class Game extends Activity {
 
         // Sets the background for the left/right menus to be green
         getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
+
+        // Set fullscreen
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_IMMERSIVE);
 
         // Initialize music
         music = new Intent();
@@ -94,7 +104,7 @@ public class Game extends Activity {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
             this.getWindow().getDecorView().setSystemUiVisibility(
-                            View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -130,6 +140,17 @@ public class Game extends Activity {
     @Override
     public void onBackPressed() {
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        PowerManager powerManager = (PowerManager)this.getSystemService(Context.POWER_SERVICE);
+        boolean isScreenAwake = (Build.VERSION.SDK_INT < 20? powerManager.isScreenOn():powerManager.isInteractive());
+
+        if (!isScreenAwake)
+            stopService(music);
     }
 
     @Override
