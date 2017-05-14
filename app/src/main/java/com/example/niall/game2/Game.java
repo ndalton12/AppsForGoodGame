@@ -33,7 +33,9 @@ public class Game extends Activity {
     private TextView numChoices;
     private TextView moneyCounter;
     private int roadblockOccurrence;
+    private int questionCounter;
     private double chance;
+    private boolean roadblockNeeded;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class Game extends Activity {
         // Initialize counters
         roadblockOccurrence = 0;
         chance = 0.0;
+        questionCounter = 0;
+        roadblockNeeded = false;
 
         // Initialize receiver for closing Game activity
         this.registerReceiver(this.finishAlert, new IntentFilter(FINISH_ALERT));
@@ -208,12 +212,18 @@ public class Game extends Activity {
             ansButton1.setText(quest.getAns1());
             ansButton2.setText(quest.getAns2());
 
-            if (Math.random() + chance >= 0.75 && roadblockOccurrence <= 5) {
+            if (roadblockOccurrence <= 7 && (roadblockNeeded  || Math.random() + chance >= 0.75)) {
                 DialogFragment newFragment = new RoadblockDialog();
                 newFragment.show(getFragmentManager(), "roadblock");
                 roadblockOccurrence++;
+                roadblockNeeded = false;
+                questionCounter = 0;
             } else {
+                questionCounter++;
                 chance += 0.2;
+
+                if (questionCounter >= 7)
+                    roadblockNeeded = true;
             }
         }
     }
@@ -252,12 +262,20 @@ public class Game extends Activity {
             ansButton1.setText(quest.getAns1());
             ansButton2.setText(quest.getAns2());
 
-            if (Math.random() + chance >= 0.75 && roadblockOccurrence <= 5) {
+            if (roadblockOccurrence <= 7 && (roadblockNeeded  || Math.random() + chance >= 0.75)) {
                 DialogFragment newFragment = new RoadblockDialog();
                 newFragment.show(getFragmentManager(), "roadblock");
                 roadblockOccurrence++;
+                roadblockNeeded = false;
+                questionCounter = 0;
             } else {
+                questionCounter++;
                 chance += 0.2;
+
+                if (questionCounter >= 7) {
+                    roadblockNeeded = true;
+                    chance = 0;
+                }
             }
         }
     }
