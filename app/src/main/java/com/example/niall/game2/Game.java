@@ -151,7 +151,7 @@ public class Game extends Activity {
                         getString(R.string.dollar_sign),
                         String.valueOf(stats.getTotalMoney())));
 
-        if(aController.getRemainingQuestions().size() == 0)
+        if(aController.getRemainingQuestions().size() == 0 || stats.getTotalMoney() <= 0)
             finishGame();
         else {
 
@@ -180,7 +180,7 @@ public class Game extends Activity {
                         getString(R.string.dollar_sign),
                         String.valueOf(stats.getTotalMoney())));
 
-        if(aController.getRemainingQuestions().size() == 0)
+        if(aController.getRemainingQuestions().size() == 0 || stats.getTotalMoney() <= 0)
             finishGame();
         else {
 

@@ -14,7 +14,7 @@ public class StatsValues {
 
     //increments the number of choices made by one
     public void updateNumChoices() {
-        numChoices = numChoices +1;
+        numChoices = numChoices + 1;
     }
 
     //changes the totalMoney variable based on the parameter
