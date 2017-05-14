@@ -17,8 +17,6 @@ public class Controller extends Application {
 
     private ArrayList<Decision> decisionSet=new ArrayList<Decision>();
 
-    private boolean bool = false;
-
     StatsValues stats = new StatsValues(); //This creates an instance of the stats function
 
 
@@ -146,15 +144,4 @@ public class Controller extends Application {
         return roadblockSetOrdered;
     }
 
-    public void on() {
-        bool = true;
-    }
-
-    public void off() {
-        bool = false;
-    }
-
-    public boolean getOnOff() {
-        return bool;
-    }
 }

@@ -67,7 +67,7 @@ public class Question {
 
     //This method returns the answer of the specific answer chosen.
     //Note: might delete this later if it is not useful for stats
-    //or something. I think that the Decision class makes it irrelevent.
+    //or something. I think that the Decision class makes it irrelevant.
     public String getAns(int val){
         if(val==1)
             return ans1;

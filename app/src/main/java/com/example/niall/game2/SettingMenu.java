@@ -87,6 +87,9 @@ public class SettingMenu extends Activity {
         }
     }
 
+    /*
+    Returns the state of the music - off or on
+     */
     public static boolean getMusicState() {
         return musicOffOn;
     }

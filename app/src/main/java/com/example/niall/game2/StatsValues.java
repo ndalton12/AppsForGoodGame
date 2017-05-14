@@ -5,19 +5,19 @@ public class StatsValues {
     private int totalMoney;
     private int numChoices;
 
-    //Contructor sets starter values of stats
+    // Constructor sets starter values of stats
     public StatsValues() {
         moneySpent = 0;
         totalMoney = 500;
         numChoices = 0;
     }
 
-    //increments the number of choices made by one
+    // Increments the number of choices made by one
     public void updateNumChoices() {
         numChoices = numChoices + 1;
     }
 
-    //changes the totalMoney variable based on the parameter
+    // Changes the totalMoney variable based on the parameter
     public void updateMoney(int x) {
         totalMoney = totalMoney + x;
         if(x<0) {
@@ -25,7 +25,7 @@ public class StatsValues {
         }
     }
 
-    //The following three methods are getters for the variables initialized at the top of this code.
+    // The following three methods are getters for the variables initialized at the top of this code
 
     public int getTotalMoney() {
         return totalMoney;
@@ -39,6 +39,9 @@ public class StatsValues {
         return numChoices;
     }
 
+    /*
+    Resets the stats values
+     */
     public void reset() {
         moneySpent = 0;
         totalMoney = 500;

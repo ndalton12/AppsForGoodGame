@@ -14,6 +14,9 @@ import android.view.WindowManager;
 
 public class Menu extends DialogFragment {
 
+    /*
+    Class for the menu dialog popup
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -25,6 +28,7 @@ public class Menu extends DialogFragment {
                 .setItems(R.array.menu_strings, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         if (which == 1) {
+                            // If the settings button is clicked, go to the settings menu
                             goToSettings(getView());
                         }
                     }
