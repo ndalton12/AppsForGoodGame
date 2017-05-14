@@ -40,6 +40,7 @@ public class MainActivity extends Activity {
             startService(music);
 
         aController = (Controller) getApplicationContext();
+        aController.reset();
 
         // Set background to green
         getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
@@ -116,6 +117,7 @@ public class MainActivity extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override

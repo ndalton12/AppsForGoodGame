@@ -9,25 +9,43 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 public class EndGameDialog extends DialogFragment {
+    private Controller aController;
 
     /*
     Class for the end game dialog popup
      */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        // Gets necessary objects
+        aController = (Controller) getActivity().getApplicationContext();
+        StatsValues stats = aController.getStatsValues();
 
-        // Use the Builder class for convenient dialog construction
+        String message;
+
+        System.out.println("**************************" + aController.getOriginalQuestions().size()
+                + "***********************" + stats.getNumChoices());
+
+
+        // Set endgame message
+        if (stats.getNumChoices() == aController.getOriginalQuestions().size())
+            message = String.format("%s\n\n%s%s%s%s", getString(R.string.congrats),getString(R.string.end_message),
+                    Integer.toString(Math.abs(stats.getMoneySpent())), " ",getString(R.string.end_message2));
+        else
+            message = String.format("%s%s%s%s", getString(R.string.end_message),
+                    Integer.toString(Math.abs(stats.getMoneySpent())), " ",getString(R.string.end_message2));
+
+        // Use the Builder to create the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(R.string.end_message)
-                .setPositiveButton(R.string.play_again, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // Move to the start screen and kill the Game.java activity
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        startActivity(intent);
+        builder.setMessage(message)
+                    .setPositiveButton(R.string.play_again, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // Move to the start screen and kill the Game.java activity
+                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            startActivity(intent);
 
-                        Intent finishHim = new Intent(Game.FINISH_ALERT);
-                        getActivity().sendBroadcast(finishHim);
-                    }
+                            Intent finishHim = new Intent(Game.FINISH_ALERT);
+                            getActivity().sendBroadcast(finishHim);
+                        }
                 });
         builder.setCancelable(false);
 

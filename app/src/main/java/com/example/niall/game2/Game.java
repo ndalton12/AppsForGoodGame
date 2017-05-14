@@ -109,6 +109,13 @@ public class Game extends Activity {
 
         stats.reset();
 
+        // Set money counter
+        moneyCounter.setText(
+                String.format(
+                        "%s%s",
+                        getString(R.string.dollar_sign),
+                        String.valueOf(stats.getTotalMoney())));
+
     }
 
     @Override
@@ -278,6 +285,7 @@ public class Game extends Activity {
                 }
             }
         }
+
     }
 
     /*

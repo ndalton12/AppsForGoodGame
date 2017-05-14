@@ -31,7 +31,7 @@ public class RoadblockDialog extends DialogFragment {
         numChoices = (TextView) getActivity().findViewById(R.id.num_choices);
         moneyCounter = (TextView) getActivity().findViewById(R.id.money_counter);
 
-        // Use the Builder class for convenient dialog construction
+        // Use the Builder to create the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(String.format("%s%s","Random event: ", r.getPrompt()))
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
@@ -48,6 +48,12 @@ public class RoadblockDialog extends DialogFragment {
                                         "%s%s",
                                         getString(R.string.dollar_sign),
                                         String.valueOf(stats.getTotalMoney())));
+
+                        if (stats.getTotalMoney() <= 0) {
+                            DialogFragment newFragment = new EndGameDialog();
+                            newFragment.show(getFragmentManager(), "end_game_dialog");
+                        }
+
                     }
                 });
         builder.setCancelable(false);

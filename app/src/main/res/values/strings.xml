@@ -16,7 +16,6 @@
     <string name="dollar_sign">$</string>
     <string name="game_name">Decisions: The College Finance Game</string>
     <string name="play_again">Play again</string>
-    <string name="end_message">Think about how the decisions you made affected your finances!</string>
     <string name="starting_money">$500</string>
     <string name="button">Button</string>
     <string name="hello_world">Hello world</string>
@@ -27,4 +26,7 @@
     <string name="start_icon_credit_2">from www.flaticon.com</string>
     <string name="ok">Ok</string>
     <string name="random_event">Random event:</string>
+    <string name="end_message">You spent $</string>
+    <string name="end_message2">over the course of this app. The goal of this app was to give you a simulation of what spending during college actually looks like. Expenses pile on faster than you may think. In a world of college loans and surprise expenses, it is important to understand how your decision affect your bank account. So, do yourself a favor: get educated on budgeting and make a plan so that you can have the best college experience possible!</string>
+    <string name="congrats">Congrats! You finished all the questions without losing all your money!</string>
 </resources>

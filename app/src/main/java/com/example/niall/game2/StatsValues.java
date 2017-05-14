@@ -1,6 +1,7 @@
 package com.example.niall.game2;
 
 public class StatsValues {
+    private final int MONEY_START = 500;
     private int moneySpent;
     private int totalMoney;
     private int numChoices;
@@ -8,7 +9,7 @@ public class StatsValues {
     // Constructor sets starter values of stats
     public StatsValues() {
         moneySpent = 0;
-        totalMoney = 500;
+        totalMoney = MONEY_START;
         numChoices = 0;
     }
 
@@ -44,7 +45,7 @@ public class StatsValues {
      */
     public void reset() {
         moneySpent = 0;
-        totalMoney = 500;
+        totalMoney = MONEY_START;
         numChoices = 0;
     }
 

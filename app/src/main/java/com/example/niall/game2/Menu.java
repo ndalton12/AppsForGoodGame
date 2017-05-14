@@ -20,7 +20,7 @@ public class Menu extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        // Use the Builder class for convenient dialog construction
+        // Use the Builder to create the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         // Set builder settings

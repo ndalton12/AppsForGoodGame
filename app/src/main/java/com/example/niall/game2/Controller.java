@@ -19,6 +19,15 @@ public class Controller extends Application {
 
     StatsValues stats = new StatsValues(); //This creates an instance of the stats function
 
+    public void reset() {
+        questionSet.clear();
+        questionSetMaster.clear();
+        questionSetOrdered.clear();
+
+        roadblockSet.clear();
+        roadblockSetMaster.clear();
+        roadblockSetOrdered.clear();
+    }
 
     /*Below are the methods related to the StatsValues class.
      * Still currently a work in progress. */
