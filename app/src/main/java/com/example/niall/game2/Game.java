@@ -225,12 +225,14 @@ public class Game extends Activity {
                 roadblockOccurrence++;
                 roadblockNeeded = false;
                 questionCounter = 0;
+                chance = 0;
             } else {
                 questionCounter++;
                 chance += 0.2;
 
-                if (questionCounter >= 7)
+                if (questionCounter >= 7) {
                     roadblockNeeded = true;
+                }
             }
         }
     }
