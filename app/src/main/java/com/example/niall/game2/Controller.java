@@ -128,6 +128,12 @@ public class Controller extends Application {
         return q;
     }
 
+    //This method takes in a Roadblock and then helps
+    // to change the stats values
+    public void changeStats(Roadblock r){
+        stats.updateMoney(r.getEffect());
+    }
+
     //returns array list of all roadblocks
     public ArrayList<Roadblock> getOriginalRoadblocks(){
         return roadblockSetMaster;

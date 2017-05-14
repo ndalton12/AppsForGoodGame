@@ -25,4 +25,6 @@
     <string name="under_apache_license">Under Apache License</string>
     <string name="Start_icon_credit">Start icon made by MadeByOliver</string>
     <string name="start_icon_credit_2">from www.flaticon.com</string>
+    <string name="ok">Ok</string>
+    <string name="random_event">Random event:</string>
 </resources>

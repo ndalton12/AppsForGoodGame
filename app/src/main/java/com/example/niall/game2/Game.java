@@ -19,6 +19,8 @@ import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
+import java.util.Random;
+
 public class Game extends Activity {
     public static final String FINISH_ALERT = "finish_alert";
     public Intent music;
@@ -30,11 +32,17 @@ public class Game extends Activity {
     private TextView spentMoney;
     private TextView numChoices;
     private TextView moneyCounter;
+    private int roadblockOccurrence;
+    private double chance;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content);
+
+        // Initialize counters
+        roadblockOccurrence = 0;
+        chance = 0.0;
 
         // Initialize receiver for closing Game activity
         this.registerReceiver(this.finishAlert, new IntentFilter(FINISH_ALERT));
@@ -199,6 +207,14 @@ public class Game extends Activity {
             questionText.setText(quest.getQue());
             ansButton1.setText(quest.getAns1());
             ansButton2.setText(quest.getAns2());
+
+            if (Math.random() + chance >= 0.75 && roadblockOccurrence <= 5) {
+                DialogFragment newFragment = new RoadblockDialog();
+                newFragment.show(getFragmentManager(), "roadblock");
+                roadblockOccurrence++;
+            } else {
+                chance += 0.2;
+            }
         }
     }
 
@@ -206,7 +222,7 @@ public class Game extends Activity {
     If the user chooses answer button 2
      */
     public void answerButton2(View v){
-        // Updates decision history
+        // Updates decision history and stats
         Decision d = new Decision(aController.getCurrentQuestion(), 2);
         aController.addDecision(d);
         aController.changeStats(aController.getCurrentQuestion(), 2);
@@ -235,6 +251,14 @@ public class Game extends Activity {
             questionText.setText(quest.getQue());
             ansButton1.setText(quest.getAns1());
             ansButton2.setText(quest.getAns2());
+
+            if (Math.random() + chance >= 0.75 && roadblockOccurrence <= 5) {
+                DialogFragment newFragment = new RoadblockDialog();
+                newFragment.show(getFragmentManager(), "roadblock");
+                roadblockOccurrence++;
+            } else {
+                chance += 0.2;
+            }
         }
     }
 
