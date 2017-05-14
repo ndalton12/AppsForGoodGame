@@ -2,8 +2,11 @@ package com.example.niall.game2;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.BroadcastReceiver;
 import android.content.ComponentCallbacks2;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +18,7 @@ import android.widget.TextView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 public class Game extends Activity {
-    public static Activity finishHim;
+    public static final String FINISH_ALERT = "finish_alert";
     public Intent music;
     private Controller aController;
     private TextView questionText;
@@ -31,7 +34,9 @@ public class Game extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content);
-        finishHim = this;
+
+        // Initialize receiver for closing Game activity
+        this.registerReceiver(this.finishAlert, new IntentFilter(FINISH_ALERT));
 
         // Sets the background for the left/right menus to be green
         getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
@@ -86,6 +91,17 @@ public class Game extends Activity {
     }
 
     /*
+    Receiver for closing the Game activity
+     */
+    BroadcastReceiver finishAlert = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Game.this.finish();
+        }
+    };
+
+    /*
     Launches pop up menu on screen
      */
     public void popMenu(View v) {
@@ -126,6 +142,13 @@ public class Game extends Activity {
     public void onPause() {
         super.onPause();
 
+    }
+
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+        this.unregisterReceiver(finishAlert);
     }
 
     public void onTrimMemory(final int level) {

@@ -24,7 +24,9 @@ public class EndGameDialog extends DialogFragment {
                         // Move to the start screen and kill the Game.java activity
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);
-                        Game.finishHim.finish();
+
+                        Intent finishHim = new Intent(Game.FINISH_ALERT);
+                        getActivity().sendBroadcast(finishHim);
                     }
                 });
         builder.setCancelable(false);
