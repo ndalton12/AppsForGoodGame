@@ -27,7 +27,7 @@ public class EndGameDialog extends DialogFragment {
 
 
         // Set endgame message
-        if (stats.getNumChoices() == aController.getOriginalQuestions().size())
+        if (stats.getNumChoices() == aController.getOriginalQuestions().size() && stats.getTotalMoney() > 0)
             message = String.format("%s\n\n%s%s%s%s", getString(R.string.congrats),getString(R.string.end_message),
                     Integer.toString(Math.abs(stats.getMoneySpent())), " ",getString(R.string.end_message2));
         else
