@@ -34,20 +34,20 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.199"
+            app:layout_constraintVertical_bias="0.13"
             tools:ignore="TextViewEdits,UnusedAttribute"
             app:layout_constraintHorizontal_bias="0.502" />
 
         <ImageView
-            android:id="@+id/wallet"
-            android:layout_width="109dp"
-            android:layout_height="94dp"
+            android:id="@id/icon"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
             android:contentDescription=""
-            android:src="@drawable/wallet"
+            android:src="@drawable/money_icon"
             app:layout_constraintBottom_toTopOf="@+id/string_start_game"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -58,7 +58,8 @@
 
         <Button
             android:id="@+id/string_start_game"
-            android:layout_width="200dp"
+            style="@android:style/Widget.Button"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
@@ -66,11 +67,12 @@
             android:layout_marginTop="8dp"
             android:onClick="startGame"
             android:text="@string/start_game"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.709" />
+            app:layout_constraintVertical_bias="0.868" />
 
     </android.support.constraint.ConstraintLayout>
 
