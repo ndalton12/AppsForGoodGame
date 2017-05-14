@@ -2,4 +2,14 @@ Happy Holidays! Your parents want to fly you back home, but you would lose some 
 The space heater in your room broke. ; Get it fixed; Wear a sweatshirt;-50;0
 You twisted your ankle three days ago when you were running and it really hurts still. ; Go to the doctor’s office; Ice it and hope it heals on its own;-75;0
 You don’t feel ready for a test tomorrow. ; Drink a redbull and pull an all nighter; Hope for the best;-5;0
-Question;answer 1; answer 2;43;-72
+You need to study for a difficult class. ; Buy a helpful study guide to get an A in the class; Don't buy the book but risk failing that class;-20;0
+Your phone breaks. ; Buy the newest phone model; Buy an old cheap phone;-200;-20
+It's Mother's Day; Buy your mom flowers; Call her to wish her a good day;-10;0
+You need a haircut; Do it yourself at home, but end up with a horrible cut; Go to a salon to get it done;0;-15
+Your car breaks down; Push it a couple miles to the nearest repair shop; Call a tow truck;0;-15
+It's your birthday!; Have a small party with your friends; Buy yourself a cupcake and celebrate alone;-50;-2
+It's time for your annual dentist cleaning; Go to the dentist; Skip going to the dentist, but risk getting a cavity;-80;0
+The next movie of your favorite movie series just came out; Go see it; Save money and wait ot watch it on rental DVD;-12;-3
+You need some new clothes; Go buy some cheap T-shirts; Go to a nicer store to buy your clothes;-15;-30
+You  have a movie service subscription; Keep the subscription; Decide to cancel it to save money;-8;0
+You may have broken your finger; Go see a doctor; Hope that it heals well on its own;-50;0
