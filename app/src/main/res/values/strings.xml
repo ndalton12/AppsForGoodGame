@@ -17,4 +17,10 @@
     <string name="game_name">Decisions: The College Finance Game</string>
     <string name="play_again">Play again</string>
     <string name="end_message">Think about how the decisions you made affected your finances!</string>
+    <string name="starting_money">$500</string>
+    <string name="button">Button</string>
+    <string name="hello_world">Hello world</string>
+    <string name="_0">0</string>
+    <string name="slidingmenu_j_feinstein">SlidingMenu - J. Feinstein</string>
+    <string name="under_apache_license">Under Apache License</string>
 </resources>

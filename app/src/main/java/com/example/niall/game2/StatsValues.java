@@ -8,7 +8,7 @@ public class StatsValues {
     //Contructor sets starter values of stats
     public StatsValues() {
         moneySpent = 0;
-        totalMoney = 100;
+        totalMoney = 500;
         numChoices = 0;
     }
 
@@ -41,7 +41,7 @@ public class StatsValues {
 
     public void reset() {
         moneySpent = 0;
-        totalMoney = 100;
+        totalMoney = 500;
         numChoices = 0;
     }
 

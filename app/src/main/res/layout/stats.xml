@@ -85,7 +85,7 @@
                     android:id="@+id/tot_money"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
-                    android:text="100"
+                    android:text="@string/starting_money"
                     android:textColor="#ffffff"
                     android:textSize="21sp" />
 
@@ -102,7 +102,7 @@
                     android:id="@+id/spent_money"
                     android:layout_width="256dp"
                     android:layout_height="120dp"
-                    android:text="0"
+                    android:text="@string/_0"
                     android:textColor="#ffffff"
                     tools:layout_editor_absoluteX="8dp"
                     tools:layout_editor_absoluteY="-414dp"
@@ -121,7 +121,7 @@
                     android:id="@+id/num_choices"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
-                    android:text="0"
+                    android:text="@string/_0"
                     android:textColor="#ffffff"
                     android:textSize="21sp" />
 
