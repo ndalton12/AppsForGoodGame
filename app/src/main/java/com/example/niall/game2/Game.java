@@ -78,6 +78,7 @@ public class Game extends Activity {
         ansButton1.setText(quest.getAns1());
         ansButton2.setText(quest.getAns2());
 
+        // Reset stats
         StatsValues stats = aController.getStatsValues();
 
         stats.reset();
@@ -133,14 +134,20 @@ public class Game extends Activity {
         }
     }
 
+    /*
+    If the user chooses answer button 1
+     */
     public void answerButton1(View v){
+        // Updates decision history
         Decision d = new Decision(aController.getCurrentQuestion(), 1);
         aController.addDecision(d);
         aController.changeStats(aController.getCurrentQuestion(), 1);
         updateDecisions(d.toString());
 
+        // Gets stats
         StatsValues stats = aController.getStatsValues();
 
+        // Update TextViews
         totalMoney.setText(String.valueOf(stats.getTotalMoney()));
         spentMoney.setText(String.valueOf(stats.getMoneySpent()));
         numChoices.setText(String.valueOf(stats.getNumChoices()));
@@ -150,6 +157,7 @@ public class Game extends Activity {
                         getString(R.string.dollar_sign),
                         String.valueOf(stats.getTotalMoney())));
 
+        // End game if necessary, else get next question and set TextViews
         if(aController.getRemainingQuestions().size() == 0 || stats.getTotalMoney() <= 0)
             finishGame();
         else {
@@ -162,14 +170,20 @@ public class Game extends Activity {
         }
     }
 
+    /*
+    If the user chooses answer button 2
+     */
     public void answerButton2(View v){
+        // Updates decision history
         Decision d = new Decision(aController.getCurrentQuestion(), 2);
         aController.addDecision(d);
         aController.changeStats(aController.getCurrentQuestion(), 2);
         updateDecisions(d.toString());
 
+        // Get stats
         StatsValues stats = aController.getStatsValues();
 
+        // Update TextViews
         totalMoney.setText(String.valueOf(stats.getTotalMoney()));
         spentMoney.setText(String.valueOf(stats.getMoneySpent()));
         numChoices.setText(String.valueOf(stats.getNumChoices()));
@@ -179,6 +193,7 @@ public class Game extends Activity {
                         getString(R.string.dollar_sign),
                         String.valueOf(stats.getTotalMoney())));
 
+        // End game if necessary, else get next question and set TextViews
         if(aController.getRemainingQuestions().size() == 0 || stats.getTotalMoney() <= 0)
             finishGame();
         else {
@@ -191,22 +206,41 @@ public class Game extends Activity {
         }
     }
 
+    /*
+    Finishes the game and displays the end dialog
+     */
     public void finishGame(){
         DialogFragment newFragment = new EndGameDialog();
         newFragment.show(getFragmentManager(), "end_game_dialog");
     }
 
+    /*
+    Updates the decision ScrollView
+     */
     private void updateDecisions(String text) {
+        // Declare/ intialize TextView and LinearLayout from decision_history.xml
         TextView test;
         LinearLayout llay = (LinearLayout) findViewById(R.id.scrollLinear);
 
+        // Set conditions for TextView
         test = new TextView(this);
         test.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         test.setText(text + "\n");
         test.setTextColor(Color.WHITE);
         test.setTextSize(22);
+
+        // Add the TextView to the LinearLayout
         llay.addView(test);
 
+        // Reverse the order of the TextViews in the LinearLayout
+        for(int k = llay.getChildCount()-1 ; k >= 0 ; k--)
+        {
+            View item = llay.getChildAt(k);
+            llay.removeViewAt(k);
+            llay.addView(item);
+        }
+
+        // Refresh the view
         ScrollView sv = (ScrollView) findViewById(R.id.decisionScrollView);
         sv.bringToFront();
         sv.invalidate();
