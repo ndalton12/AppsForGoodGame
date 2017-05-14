@@ -40,6 +40,7 @@ public class MainActivity extends Activity {
             startService(music);
 
         aController = (Controller) getApplicationContext();
+        aController.reset();
 
         // Set background to green
         getWindow().getDecorView().setBackgroundColor(Color.rgb(0, 153, 51));
@@ -89,12 +90,12 @@ public class MainActivity extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    Roadblock newR;
+
         try {
-            InputStream stream2 = assetManager.open("roadblockText.txt");
+            InputStream stream2 = assetManager.open("roadblockText");
             Scanner in2 = new Scanner(stream2);
             int j;
-            Question newQ;
+            Roadblock newR;
 
             int counter = 0;
             while (in2.hasNextLine()) {
@@ -108,7 +109,7 @@ public class MainActivity extends Activity {
                 int effInt = Integer.parseInt(effString);
 
                 newR = new Roadblock(prompter, effInt);
-                Log.i("Elena", newR.toString());
+                Log.i("Roadblock added", newR.toString());
                 aController.addRoadblock(newR);
                 counter++;
             }
@@ -116,6 +117,7 @@ public class MainActivity extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override

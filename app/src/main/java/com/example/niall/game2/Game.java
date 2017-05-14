@@ -19,6 +19,8 @@ import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
+import java.util.Random;
+
 public class Game extends Activity {
     public static final String FINISH_ALERT = "finish_alert";
     public Intent music;
@@ -30,11 +32,21 @@ public class Game extends Activity {
     private TextView spentMoney;
     private TextView numChoices;
     private TextView moneyCounter;
+    private int roadblockOccurrence;
+    private int questionCounter;
+    private double chance;
+    private boolean roadblockNeeded;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content);
+
+        // Initialize counters
+        roadblockOccurrence = 0;
+        chance = 0.0;
+        questionCounter = 0;
+        roadblockNeeded = false;
 
         // Initialize receiver for closing Game activity
         this.registerReceiver(this.finishAlert, new IntentFilter(FINISH_ALERT));
@@ -96,6 +108,13 @@ public class Game extends Activity {
         StatsValues stats = aController.getStatsValues();
 
         stats.reset();
+
+        // Set money counter
+        moneyCounter.setText(
+                String.format(
+                        "%s%s",
+                        getString(R.string.dollar_sign),
+                        String.valueOf(stats.getTotalMoney())));
 
     }
 
@@ -199,6 +218,20 @@ public class Game extends Activity {
             questionText.setText(quest.getQue());
             ansButton1.setText(quest.getAns1());
             ansButton2.setText(quest.getAns2());
+
+            if (roadblockOccurrence <= 7 && (roadblockNeeded  || Math.random() + chance >= 0.75)) {
+                DialogFragment newFragment = new RoadblockDialog();
+                newFragment.show(getFragmentManager(), "roadblock");
+                roadblockOccurrence++;
+                roadblockNeeded = false;
+                questionCounter = 0;
+            } else {
+                questionCounter++;
+                chance += 0.2;
+
+                if (questionCounter >= 7)
+                    roadblockNeeded = true;
+            }
         }
     }
 
@@ -206,7 +239,7 @@ public class Game extends Activity {
     If the user chooses answer button 2
      */
     public void answerButton2(View v){
-        // Updates decision history
+        // Updates decision history and stats
         Decision d = new Decision(aController.getCurrentQuestion(), 2);
         aController.addDecision(d);
         aController.changeStats(aController.getCurrentQuestion(), 2);
@@ -235,7 +268,24 @@ public class Game extends Activity {
             questionText.setText(quest.getQue());
             ansButton1.setText(quest.getAns1());
             ansButton2.setText(quest.getAns2());
+
+            if (roadblockOccurrence <= 7 && (roadblockNeeded  || Math.random() + chance >= 0.75)) {
+                DialogFragment newFragment = new RoadblockDialog();
+                newFragment.show(getFragmentManager(), "roadblock");
+                roadblockOccurrence++;
+                roadblockNeeded = false;
+                questionCounter = 0;
+            } else {
+                questionCounter++;
+                chance += 0.2;
+
+                if (questionCounter >= 7) {
+                    roadblockNeeded = true;
+                    chance = 0;
+                }
+            }
         }
+
     }
 
     /*
