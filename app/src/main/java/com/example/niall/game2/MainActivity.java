@@ -36,7 +36,8 @@ public class MainActivity extends Activity {
 
         music = new Intent();
         music.setClass(this, MusicService.class);
-        startService(music);
+        if (SettingMenu.getMusicState())
+            startService(music);
 
         aController = (Controller) getApplicationContext();
 
@@ -144,7 +145,8 @@ public class MainActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        startService(music);
+        if (SettingMenu.getMusicState())
+            startService(music);
     }
 
     @Override
