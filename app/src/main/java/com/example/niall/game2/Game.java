@@ -47,7 +47,6 @@ public class Game extends Activity {
         SlidingMenu menuStats = new SlidingMenu(this);
         menuStats.setMode(SlidingMenu.LEFT_RIGHT);
         menuStats.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-        menuStats.setTouchModeBehind(SlidingMenu.TOUCHMODE_FULLSCREEN);
         menuStats.setShadowWidthRes(R.dimen.shadow_width);
         menuStats.setShadowDrawable(R.drawable.shadow);
         menuStats.setBehindOffsetRes(R.dimen.slidingmenu_offset);

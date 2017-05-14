@@ -4,23 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/decision_history" >
-    <!--<Button
-        android:id="@+id/random2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Button"
-        android:onClick="popMenu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.886" />-->
+    android:id="@+id/decision_history"
+    android:clickable="true" >
 
     <TextView
         android:id="@+id/textView"
@@ -52,59 +37,41 @@
     <android.support.percent.PercentRelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintVertical_bias="1.0" >
-
-        <LinearLayout
-            app:layout_widthPercent="70%"
-            app:layout_heightPercent="70%"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintVertical_bias="0.909"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            tools:ignore="RtlHardcoded">
-        <ScrollView
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintVertical_bias="0.909"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:id="@+id/decisionScrollView"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            tools:ignore="ObsoleteLayoutParam,UselessParent">
+        android:layout_marginLeft="8dp" >
 
             <LinearLayout
-                android:id="@+id/scrollLinear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-            </LinearLayout>
-        </ScrollView>
+                app:layout_widthPercent="75%"
+                app:layout_heightPercent="70%"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                tools:ignore="RtlHardcoded">
+                <ScrollView
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:id="@+id/decisionScrollView"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    tools:ignore="ObsoleteLayoutParam,UselessParent">
+
+                    <LinearLayout
+                        android:id="@+id/scrollLinear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+                    </LinearLayout>
+                </ScrollView>
         </LinearLayout>
 
     </android.support.percent.PercentRelativeLayout>
