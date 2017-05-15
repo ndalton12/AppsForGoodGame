@@ -8,7 +8,7 @@ It's Mother's Day!; Buy your mom flowers; Call her to wish her a good day;-10;0
 You need a haircut.; DIY at home, but end up with a horrible cut; Go to a salon;0;-15
 Your car breaks down.; Push it a couple miles to the nearest repair shop; Call a tow truck;0;-15
 It's your birthday!; Small party with your friends; Get a cupcake and celebrate alone;-50;-2
-It's time for your annual dentist cleaning.; Go to the dentist; Skip going to the dentist, but risk getting a cavity;-80;0
+It's time for your annual dentist cleaning.; Go to the dentist; Don't go, but risk getting a cavity;-80;0
 The next movie of your favorite movie series just came out.; Go see it; Save money and wait ot watch it on rental DVD;-12;-3
 You need some new clothes.; Go buy some cheap T-shirts; Go to a nicer store to buy your clothes;-15;-30
 You  have a movie service subscription.; Keep the subscription; Decide to cancel it to save money;-8;0
