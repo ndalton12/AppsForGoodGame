@@ -228,7 +228,7 @@ public class Game extends Activity {
                 chance = 0;
             } else {
                 questionCounter++;
-                chance += 0.2;
+                chance += 0.1;
 
                 if (questionCounter >= 7) {
                     roadblockNeeded = true;
@@ -280,7 +280,7 @@ public class Game extends Activity {
                 chance = 0;
             } else {
                 questionCounter++;
-                chance += 0.2;
+                chance += 0.1;
 
                 if (questionCounter >= 7) {
                     roadblockNeeded = true;

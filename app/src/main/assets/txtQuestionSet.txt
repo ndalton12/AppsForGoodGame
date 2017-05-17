@@ -13,8 +13,8 @@ The next movie of your favorite movie series just came out.; Go see it; Save mon
 You need some new clothes.; Go buy some cheap T-shirts; Go to a nicer store to buy your clothes;-15;-30
 You  have a movie service subscription.; Keep the subscription; Decide to cancel it to save money;-8;0
 You may have broken your finger.; Go see a doctor; Hope that it heals well on its own;-50;0
-A homeless person asks you for money; Give him what was in your pocket; Keep walking;-5;0
-Your friend just got through a messy breakup; Take her to the movies to cheer her up; Give her space;-30;0
-Your sister decided to have a destination wedding and you have to pay for your own plane ticket; Buy the ticket and attend; Stay and watch from Skype;-250;0
+A homeless person asks you for money.; Give him what was in your pocket; Keep walking;-5;0
+Your friend just got through a messy breakup.; Take her to the movies to cheer her up; Give her space;-30;0
+Your sister decided to have a destination wedding and you have to pay for your own plane ticket.; Buy the ticket and attend; Stay and watch from Skype;-250;0
 Your childhood best friend is in town! The only problem is that you’re working all week; Miss work and hang out; GO to work;0;50
-You bump into a car in the parking lot; Drive away; Stay and pay for the damages;0;-50
+You bump into a car in the parking lot.; Drive away; Stay and pay for the damages;0;-50
