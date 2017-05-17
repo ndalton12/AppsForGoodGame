@@ -19,8 +19,6 @@ import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-import java.util.Random;
-
 public class Game extends Activity {
     public static final String FINISH_ALERT = "finish_alert";
     public Intent music;
