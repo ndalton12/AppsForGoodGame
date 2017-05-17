@@ -219,7 +219,7 @@ public class Game extends Activity {
             ansButton1.setText(quest.getAns1());
             ansButton2.setText(quest.getAns2());
 
-            if (roadblockOccurrence <= 7 && (roadblockNeeded  || Math.random() + chance >= 0.75)) {
+            if (roadblockOccurrence < 7 && (roadblockNeeded  || Math.random() + chance >= 0.9)) {
                 DialogFragment newFragment = new RoadblockDialog();
                 newFragment.show(getFragmentManager(), "roadblock");
                 roadblockOccurrence++;
@@ -228,7 +228,7 @@ public class Game extends Activity {
                 chance = 0;
             } else {
                 questionCounter++;
-                chance += 0.1;
+                chance += 0.05;
 
                 if (questionCounter >= 7) {
                     roadblockNeeded = true;
@@ -271,7 +271,7 @@ public class Game extends Activity {
             ansButton1.setText(quest.getAns1());
             ansButton2.setText(quest.getAns2());
 
-            if (roadblockOccurrence <= 7 && (roadblockNeeded  || Math.random() + chance >= 0.75)) {
+            if (roadblockOccurrence < 7 && (roadblockNeeded  || Math.random() + chance >= 0.9)) {
                 DialogFragment newFragment = new RoadblockDialog();
                 newFragment.show(getFragmentManager(), "roadblock");
                 roadblockOccurrence++;
@@ -280,7 +280,7 @@ public class Game extends Activity {
                 chance = 0;
             } else {
                 questionCounter++;
-                chance += 0.1;
+                chance += 0.05;
 
                 if (questionCounter >= 7) {
                     roadblockNeeded = true;
